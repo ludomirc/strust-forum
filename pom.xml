@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>qbit.edukacja.stust.forum</groupId>
+    <artifactId>strust-forum</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>forum-web</module>
+        <module>forum-service</module>
+        <module>forum-api</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- forum module -->
+            <dependency>
+                <groupId>qbit.edukacja.stust.forum</groupId>
+                <artifactId>forum-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>qbit.edukacja.stust.forum</groupId>
+                <artifactId>forum-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>ejb</type>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- jee -->
+            <dependency>
+                <groupId>org.apache.openejb</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>6.0-6</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- strust -->
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-core</artifactId>
+                <version>2.3.24</version>
+            </dependency>
+
+            <!-- for test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <!-- Tell Maven we are using EJB 3.1 -->
+                        <ejbVersion>3.1</ejbVersion>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

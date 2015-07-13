@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="user" namespace="/User" extends="struts-default">
+        <interceptors>
+            <!-- Ejb Injection Interceptor -->
+            <interceptor name="ejbInjectionInterceptor"
+                         class="com.qbit.user.action.EJBInjectionInterceptor"></interceptor>
+
+            <!-- Interceptors 'newStack' stack -->
+            <interceptor-stack name="newStack">
+                <interceptor-ref name="ejbInjectionInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- Login -->
+        <action name="Login">
+            <result>pages/login.jsp</result>
+        </action>
+        <!-- Welcome -->
+        <action name="Welcome" class="com.qbit.user.action.WelcomeUserAction">
+            <interceptor-ref name="newStack"/>
+            <result name="SUCCESS">pages/welcome_user.jsp</result>
+        </action>
+    </package>
+
+</struts>
