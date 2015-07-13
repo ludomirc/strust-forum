@@ -3,7 +3,7 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Struts 2 Web Application</display-name>
+    <display-name>Strut Forum</display-name>
 
     <filter>
         <filter-name>struts2</filter-name>
@@ -15,4 +15,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <welcome-file-list>
+        <welcome-file>index.action</welcome-file>
+    </welcome-file-list>
 </web-app>

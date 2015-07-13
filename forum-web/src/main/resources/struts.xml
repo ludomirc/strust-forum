@@ -6,7 +6,17 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
 
-    <package name="user" namespace="/User" extends="struts-default">
+    <package name="default" extends="struts-default">
+        <action name="index" class="com.qbit.user.action.IndexAction">
+            <result name="showReportResult" type="redirectAction">
+                <param name="actionName">Login</param>
+                <param name="namespace">/forum</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="forum" namespace="/forum" extends="struts-default">
+
         <interceptors>
             <!-- Ejb Injection Interceptor -->
             <interceptor name="ejbInjectionInterceptor"
@@ -21,12 +31,13 @@
 
         <!-- Login -->
         <action name="Login">
-            <result>pages/login.jsp</result>
+            <result>login.jsp</result>
         </action>
         <!-- Welcome -->
+
         <action name="Welcome" class="com.qbit.user.action.WelcomeUserAction">
             <interceptor-ref name="newStack"/>
-            <result name="SUCCESS">pages/welcome_user.jsp</result>
+            <result name="SUCCESS">welcome_user.jsp</result>
         </action>
     </package>
 
