@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>qbit.edukacja.stust.forum</groupId>
-    <artifactId>strust-forum</artifactId>
+    <groupId>qbit.edukacja.struts.forum</groupId>
+    <artifactId>struts-forum</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -24,14 +24,14 @@
         <dependencies>
             <!-- forum module -->
             <dependency>
-                <groupId>qbit.edukacja.stust.forum</groupId>
+                <groupId>qbit.edukacja.struts.forum</groupId>
                 <artifactId>forum-api</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <scope>provided</scope>
             </dependency>
 
             <dependency>
-                <groupId>qbit.edukacja.stust.forum</groupId>
+                <groupId>qbit.edukacja.struts.forum</groupId>
                 <artifactId>forum-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <type>ejb</type>
@@ -46,7 +46,7 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- strust -->
+            <!-- struts -->
             <dependency>
                 <groupId>org.apache.struts</groupId>
                 <artifactId>struts2-core</artifactId>
@@ -61,7 +61,34 @@
                 <scope>test</scope>
             </dependency>
 
+            <!-- logger for hibernate-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+
+            <!-- hibernate dependency-->
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>4.3.10.Final</version>
+            </dependency>
+
+            <!-- Postgres SQL 9.4 driver dependency-->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.4-1201-jdbc41</version>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>
@@ -72,6 +99,9 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
         </plugins>

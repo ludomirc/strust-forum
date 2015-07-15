@@ -29,7 +29,7 @@ public class EJBInjectionInterceptor implements Interceptor {
     private static InitialContext context = null;
     private static Map<Class<? extends Object>, List<Field>> ejbInstanceFields = new HashMap<Class<? extends Object>, List<Field>>();
 
-    public static final String APP_NAME= "strust-forum";
+    public static final String APP_NAME = "struts-forum";
 
     static {
         try {
