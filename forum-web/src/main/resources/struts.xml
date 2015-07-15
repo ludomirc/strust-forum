@@ -7,9 +7,17 @@
     <constant name="struts.devMode" value="true"/>
 
     <package name="default" extends="struts-default">
+
         <action name="index" class="com.qbit.user.action.IndexAction">
-            <result name="showReportResult" type="redirectAction">
-                <param name="actionName">Login</param>
+            <result name="redirectToLogin" type="redirectAction">
+                <param name="actionName">login</param>
+                <param name="namespace">/forum</param>
+            </result>
+        </action>
+
+        <action name="forum" class="com.qbit.user.action.IndexAction">
+            <result name="redirectToLogin" type="redirectAction">
+                <param name="actionName">login</param>
                 <param name="namespace">/forum</param>
             </result>
         </action>
@@ -30,14 +38,15 @@
         </interceptors>
 
         <!-- Login -->
-        <action name="Login">
+        <action name="login">
             <result>login.jsp</result>
         </action>
         <!-- Welcome -->
 
-        <action name="Welcome" class="com.qbit.user.action.WelcomeUserAction">
+        <action name="welcome" class="com.qbit.user.action.WelcomeUserAction">
             <interceptor-ref name="newStack"/>
-            <result name="SUCCESS">welcome_user.jsp</result>
+            <result name="success">welcome_user.jsp</result>
+            <result name="error">login.jsp</result>
         </action>
     </package>
 

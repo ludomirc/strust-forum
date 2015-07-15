@@ -2,16 +2,20 @@ package com.qbit.user.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.qbit.ejb.forumservice.ForumService;
+import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
 
 public class WelcomeUserAction extends ActionSupport {
+
+    public static final Logger log = Logger.getLogger(WelcomeUserAction.class);
 
     @EJB(name = "ForumService")
     ForumService forumService;
 
     private String username;
     private String password;
+
     public String getUsername() {
         return username;
     }
@@ -30,9 +34,22 @@ public class WelcomeUserAction extends ActionSupport {
 
     // all struts logic here
     public String execute() {
+        log.debug(this.toString());
+        if (password.equals(username)) {
+            log.debug("return : " + SUCCESS);
+            return SUCCESS;
+        } else {
+            log.debug("return : " + ERROR);
+            return ERROR;
+        }
 
-        username = forumService.getHallWordForum();
-        return "SUCCESS";
+    }
 
+    @Override
+    public String toString() {
+        return "WelcomeUserAction{" +
+                "  username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -15,7 +15,7 @@ public class IndexAction extends ActionSupport {
     // all struts logic here
     public String execute() {
         logger.debug("in execute");
-        return "showReportResult";
+        return "redirectToLogin";
 
     }
 }
