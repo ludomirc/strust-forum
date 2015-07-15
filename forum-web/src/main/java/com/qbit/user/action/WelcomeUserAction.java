@@ -8,7 +8,7 @@ import javax.ejb.EJB;
 
 public class WelcomeUserAction extends ActionSupport {
 
-    public static final Logger log = Logger.getLogger(WelcomeUserAction.class);
+    private static final Logger log = Logger.getLogger(WelcomeUserAction.class);
 
     @EJB(name = "ForumService")
     ForumService forumService;

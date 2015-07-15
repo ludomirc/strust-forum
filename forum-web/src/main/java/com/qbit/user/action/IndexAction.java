@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
  */
 public class IndexAction extends ActionSupport {
 
-    public static final Logger logger = Logger.getLogger(IndexAction.class);
+    private static final Logger logger = Logger.getLogger(IndexAction.class);
 
     // all struts logic here
     public String execute() {
