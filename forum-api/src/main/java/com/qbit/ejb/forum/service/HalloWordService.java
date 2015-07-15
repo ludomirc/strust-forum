@@ -1,10 +1,10 @@
-package com.qbit.ejb.forumservice;
+package com.qbit.ejb.forum.service;
 
 /**
  * Created by Benek on 2015-07-03.
  */
 
-public interface ForumService {
+public interface HalloWordService {
 
     public String getHallWordForum();
 

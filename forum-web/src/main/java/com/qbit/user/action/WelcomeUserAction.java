@@ -1,7 +1,7 @@
 package com.qbit.user.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.qbit.ejb.forumservice.ForumService;
+import com.qbit.ejb.forum.service.HalloWordService;
 import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -10,8 +10,8 @@ public class WelcomeUserAction extends ActionSupport {
 
     private static final Logger log = Logger.getLogger(WelcomeUserAction.class);
 
-    @EJB(name = "ForumService")
-    ForumService forumService;
+    @EJB(name = "HalloWordService")
+    HalloWordService halloWordService;
 
     private String username;
     private String password;

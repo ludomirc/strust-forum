@@ -1,15 +1,17 @@
 package com.qbit.ejb.forumservice;
 
+import com.qbit.ejb.forum.service.HalloWordService;
+
 import javax.ejb.*;
 
 /**
  * Created by Benek on 2015-07-03.
  */
-@Stateless(name = "ForumService" , mappedName = "ForumService")
-@Remote(ForumService.class)
-@Local(ForumService.class)
+@Stateless(name = "HalloWordService", mappedName = "HalloWordService")
+@Remote(HalloWordService.class)
+@Local(HalloWordService.class)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-public class ForumServiceImpl implements ForumService {
+public class HalloWordServiceImpl implements HalloWordService {
 
 
     private static String message = "hello Forum default message";
