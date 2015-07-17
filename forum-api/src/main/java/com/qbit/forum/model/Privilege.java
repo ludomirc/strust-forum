@@ -1,5 +1,6 @@
 package com.qbit.forum.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -7,12 +8,14 @@ import javax.persistence.Table;
  * Created by Benek on 2015-07-15.
  */
 @Entity
+@Table(name = "privileges")
 public class Privilege extends BaseModel {
 
+    @Column(name = "privilege_id")
+    protected short privilegeId;
 
-    private short privilegeId;
-
-    private String description;
+    @Column(name = "description")
+    protected String description;
 
 
     public short getPrivilegeId() {

@@ -19,7 +19,7 @@ public abstract class BaseModel implements Serializable {
             @org.hibernate.annotations.Parameter(name = "prefer_entity_table_as_segment_value", value = "true"),
             @org.hibernate.annotations.Parameter(name = "optimizer", value = "pooled-lo"),
             @org.hibernate.annotations.Parameter(name = "increment_size", value = "100")})
-    private int id;
+    protected int id;
 
     public int getId() {
         return id;
