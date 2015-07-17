@@ -30,7 +30,6 @@ public class Role extends BaseModel {
     )
     protected Collection<Privilege> privileges;
 
-
     public String getName() {
         return name;
     }
@@ -53,6 +52,14 @@ public class Role extends BaseModel {
 
     public void setRoleId(short roleId) {
         this.roleId = roleId;
+    }
+
+    public Collection<Privilege> getPrivileges() {
+        return privileges;
+    }
+
+    public void setPrivileges(Collection<Privilege> privileges) {
+        this.privileges = privileges;
     }
 
     @Override
