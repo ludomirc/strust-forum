@@ -47,7 +47,7 @@ public class Role extends BaseModel {
     @Override
     public String toString() {
         return "Role{" +
-                "id=" + getId() +
+                "id='" + getId() + '\'' +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", roleId=" + roleId +

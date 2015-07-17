@@ -37,7 +37,7 @@ public class Privilege extends BaseModel {
     @Override
     public String toString() {
         return "Privilege{" +
-                "id=" + getId() +
+                "id='" + getId() + '\'' +
                 "privilegeId=" + privilegeId +
                 ", description='" + description + '\'' +
                 '}';

@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BaseModel implements Serializable {
+public abstract class BaseModel implements Serializable, Cloneable {
 
     @Id
     @GeneratedValue(generator = "pooled")
