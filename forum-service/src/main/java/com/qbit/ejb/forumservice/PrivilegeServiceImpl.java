@@ -23,8 +23,8 @@ import java.util.Queue;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class PrivilegeServiceImpl implements PrivilegeService {
 
-    @PersistenceContext(unitName = "movie-unit", type = PersistenceContextType.EXTENDED)
-    private EntityManager entityManager;
+    @PersistenceContext(unitName = "pa-forum", type = PersistenceContextType.EXTENDED)
+    protected EntityManager entityManager;
 
     @Override
     public Privilege find(Long id) {
@@ -45,7 +45,6 @@ public class PrivilegeServiceImpl implements PrivilegeService {
         Root<Privilege> c = q.from(Privilege.class);
         ParameterExpression<Short> privilegeId = cb.parameter(Short.class);
         q.select(c).where(cb.equal(c.<Number>get("privilegeId"), privilegeId));
-
         TypedQuery<Privilege> query = entityManager.createQuery(q);
         query.setParameter(privilegeId, privilege.getPrivilegeId());
         List<Privilege> results = query.getResultList();
