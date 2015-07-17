@@ -1,21 +1,19 @@
 package com.qbit.ejb.forum.service;
 
+import com.qbit.forum.model.BaseModel;
+
 import java.util.Collection;
 
 /**
  * Created by Benek on 2015-07-17.
  */
-public interface BaseService<T> {
+public interface BaseService<T extends BaseModel> {
 
-    public T findById(Long id);
-
-    public void deleteById(Long id);
-
-    public T findByObject(T object);
-
-    public void deleteByObject(T object);
+    public T find(Long id);
 
     Collection<T> getAll();
+
+    public T find(T object);
 
     void add(T object);
 
