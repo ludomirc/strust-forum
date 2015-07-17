@@ -122,17 +122,6 @@ public class TestEntity {
         return typedQuery.getResultList();
     }
 
-    /*@Test()
-    public void testRoleEntity() {
-        Role role = new Role();
-
-        role.setDescription("testRoleDescription");
-        role.setName("testRoleName");
-        role.setRoleId((short) 10);
-
-        em.persist(role);
-    }*/
-
     @AfterClass
     public void shutDown() {
         em.close();
