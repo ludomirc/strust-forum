@@ -10,6 +10,7 @@ import java.util.Collection;
 @Table(name = "roles")
 public class Role extends BaseModel {
 
+
     @Column(name = "name")
     protected String name;
 
@@ -29,6 +30,24 @@ public class Role extends BaseModel {
             }
     )
     protected Collection<Privilege> privileges;
+
+    public Role() {
+    }
+
+    public Role(String name, String description, short roleId, Collection<Privilege> privileges) {
+        this.name = name;
+        this.description = description;
+        this.roleId = roleId;
+        this.privileges = privileges;
+    }
+
+    public Role(Long id, String name, String description, short roleId, Collection<Privilege> privileges) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.roleId = roleId;
+        this.privileges = privileges;
+    }
 
     public String getName() {
         return name;

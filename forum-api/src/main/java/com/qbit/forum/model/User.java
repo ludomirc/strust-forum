@@ -27,6 +27,22 @@ public class User extends BaseModel {
     )
     protected Collection<Role> roles;
 
+    public User() {
+    }
+
+    public User(String username, String password, Collection<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(Long id, String username, String password, Collection<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public String getUsername() {
         return username;
     }

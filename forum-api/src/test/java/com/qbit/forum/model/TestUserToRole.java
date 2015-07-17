@@ -6,7 +6,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 
 /**
@@ -15,16 +17,26 @@ import java.util.ArrayList;
 public class TestUserToRole {
 
     private static final Logger log = Logger.getLogger(TestUserToRole.class);
-
     protected EntityManager em;
 
     @BeforeClass
-    public void setUp() {
-        em = PersistenceManager.INSTANCE.getEntityManager();
+    private void setUp() {
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("test-persistence-unit");
+        em = emFactory.createEntityManager();
     }
 
-    @Test
+    @AfterClass
+    private void shutDown() {
+        if (em.isOpen()) {
+            em.close();
+        }
+    }
+
+
+    @Test(groups = "database-test")
     public void TestUserToRole() throws InterruptedException {
+        log.info("------start TestUserToRole test------");
+
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
@@ -33,17 +45,14 @@ public class TestUserToRole {
         user.setPassword("testPassword");
         user.setUsername("testUsername");
         em.persist(user);
+        em.flush();
 
         Role role = new Role();
         role.setDescription("testDesc");
         role.setRoleId((short) 10);
         role.setName("test role");
         em.persist(role);
-
-        transaction.commit();
-
-
-        transaction.begin();
+        em.flush();
 
 
         user = em.find(User.class, user.id);
@@ -58,12 +67,6 @@ public class TestUserToRole {
         user.getRoles().add(role);
 
         transaction.commit();
-    }
-
-
-    @AfterClass
-    public void shutDown() {
-        em.close();
-        PersistenceManager.INSTANCE.close();
+        log.info("------finish TestUserToRole test------");
     }
 }

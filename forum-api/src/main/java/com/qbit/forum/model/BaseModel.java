@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BaseModel implements Serializable, Cloneable {
 
+
     @Id
     @GeneratedValue(generator = "pooled")
     @GenericGenerator(name = "pooled", strategy = "org.hibernate.id.enhanced.TableGenerator", parameters = {
@@ -19,13 +20,13 @@ public abstract class BaseModel implements Serializable, Cloneable {
             @org.hibernate.annotations.Parameter(name = "prefer_entity_table_as_segment_value", value = "true"),
             @org.hibernate.annotations.Parameter(name = "optimizer", value = "pooled-lo"),
             @org.hibernate.annotations.Parameter(name = "increment_size", value = "100")})
-    protected int id;
+    protected Long id;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

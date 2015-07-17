@@ -12,17 +12,30 @@ import javax.persistence.Table;
 public class Privilege extends BaseModel {
 
     @Column(name = "privilege_id")
-    protected short privilegeId;
+    protected Short privilegeId;
 
     @Column(name = "description")
     protected String description;
 
+    public Privilege() {
+    }
 
-    public short getPrivilegeId() {
+    public Privilege(Short privilegeId, String description) {
+        this.privilegeId = privilegeId;
+        this.description = description;
+    }
+
+    public Privilege(Long id, short privilegeId, String description) {
+        this.id = id;
+        this.privilegeId = privilegeId;
+        this.description = description;
+    }
+
+    public Short getPrivilegeId() {
         return privilegeId;
     }
 
-    public void setPrivilegeId(short privilegeId) {
+    public void setPrivilegeId(Short privilegeId) {
         this.privilegeId = privilegeId;
     }
 

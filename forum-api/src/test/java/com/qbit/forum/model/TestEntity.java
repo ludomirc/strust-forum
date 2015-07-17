@@ -7,6 +7,8 @@ package com.qbit.forum.model;
 import org.testng.annotations.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -21,15 +23,21 @@ public class TestEntity {
     protected EntityManager em;
 
     @BeforeClass
-    public void setUp() {
-        em = PersistenceManager.INSTANCE.getEntityManager();
+    private void setUp() {
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("test-persistence-unit");
+        em = emFactory.createEntityManager();
+    }
+
+    @AfterClass
+    private void shutDown() {
+        if (em.isOpen()) {
+            em.close();
+        }
     }
 
     @BeforeMethod
     private void setUpMethod() {
-        if (!em.getTransaction().isActive()) {
-            em.getTransaction().begin();
-        }
+        em.getTransaction().begin();
     }
 
     @AfterMethod
@@ -40,7 +48,7 @@ public class TestEntity {
     }
 
 
-    @Test()
+    @Test(groups = "database-test")
     public void testRoleEntity() throws NoSuchFieldException {
         String expectedDescription = "testRoleDescription";
         String expectedName = "testRoleName";
@@ -64,11 +72,11 @@ public class TestEntity {
 
     private void persistAndCommit(Role role) {
         em.persist(role);
-        em.getTransaction().commit();
+        em.flush();
     }
 
 
-    @Test()
+    @Test(groups = "database-test")
     public void testUerEntity() throws NoSuchFieldException {
         String expectedUsername = "testTserName";
         String expectedPassword = "test password";
@@ -78,7 +86,7 @@ public class TestEntity {
         user.setPassword(expectedPassword);
 
         em.persist(user);
-        em.getTransaction().commit();
+        em.flush();
 
         List<Object> resultList = getListCueryByCriteria(User.class, "username");
 
@@ -89,7 +97,7 @@ public class TestEntity {
         assertNotNull(user.getPassword(), "Password can't bee null");
     }
 
-    @Test()
+    @Test(groups = "database-test")
     public void testPrivilegeEntity() throws NoSuchFieldException {
         String expectedDescription = "test privileges";
         Short expectedPrivilegeId = 10;
@@ -99,7 +107,7 @@ public class TestEntity {
         privilege.setPrivilegeId((short) 10);
 
         em.persist(privilege);
-        em.getTransaction().commit();
+        em.flush();
 
         List<Object> resultList = getListCueryByCriteria(Privilege.class, "privilegeId");
 
@@ -107,7 +115,7 @@ public class TestEntity {
         privilege = (Privilege) resultList.get(0);
 
         assertEquals(privilege.getDescription(), expectedDescription, "Description will be equal");
-        assertEquals(privilege.getPrivilegeId(), (short) expectedPrivilegeId, "Description id will be equal");
+        assertEquals(privilege.getPrivilegeId(), expectedPrivilegeId, "Description id will be equal");
     }
 
     private List<Object> getListCueryByCriteria(Class clazz, String filedName) {
@@ -122,10 +130,5 @@ public class TestEntity {
         return typedQuery.getResultList();
     }
 
-    @AfterClass
-    public void shutDown() {
-        em.close();
-        PersistenceManager.INSTANCE.close();
-    }
 
 }
