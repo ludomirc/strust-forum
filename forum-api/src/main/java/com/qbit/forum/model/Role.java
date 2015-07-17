@@ -1,8 +1,7 @@
 package com.qbit.forum.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by Benek on 2015-07-15.
@@ -19,6 +18,18 @@ public class Role extends BaseModel {
 
     @Column(name = "role_id")
     protected short roleId;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "role_privilege",
+            joinColumns = {
+                    @JoinColumn(table = "role", name = "role_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(table = "privilege", name = "privilege_id", referencedColumnName = "id")
+            }
+    )
+    protected Collection<Privilege> privileges;
+
 
     public String getName() {
         return name;
