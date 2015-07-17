@@ -48,7 +48,7 @@ public class Role extends BaseModel {
     public String toString() {
         return "Role{" +
                 "id='" + getId() + '\'' +
-                "name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", roleId=" + roleId +
                 '}';

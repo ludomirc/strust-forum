@@ -55,7 +55,7 @@ public class User extends BaseModel {
     public String toString() {
         return "User{" +
                 "id='" + getId() + '\'' +
-                "username='" + username + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

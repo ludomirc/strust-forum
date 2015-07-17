@@ -38,7 +38,7 @@ public class Privilege extends BaseModel {
     public String toString() {
         return "Privilege{" +
                 "id='" + getId() + '\'' +
-                "privilegeId=" + privilegeId +
+                ", privilegeId=" + privilegeId +
                 ", description='" + description + '\'' +
                 '}';
     }
