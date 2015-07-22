@@ -1,6 +1,5 @@
 package com.qbit.ejb.forumservice;
 
-import com.qbit.ejb.forum.service.HalloWordService;
 import com.qbit.ejb.forum.service.PrivilegeService;
 import com.qbit.forum.model.Privilege;
 
@@ -17,13 +16,13 @@ import java.util.Queue;
 /**
  * Created by Benek on 2015-07-17.
  */
-@Stateless(name = "PrivilegeService", mappedName = "PrivilegeService")
+@Stateful(name = "PrivilegeService", mappedName = "PrivilegeService")
 @Remote(PrivilegeService.class)
 @Local(PrivilegeService.class)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class PrivilegeServiceImpl implements PrivilegeService {
 
-    @PersistenceContext(unitName = "pa-forum", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "test-persistence-unit", type = PersistenceContextType.EXTENDED)
     protected EntityManager entityManager;
 
     @Override
@@ -34,7 +33,7 @@ public class PrivilegeServiceImpl implements PrivilegeService {
     @Override
     public Collection<Privilege> getAll() {
         Query query = entityManager.createQuery("SELECT p from Privilege as p");
-        return query.getResultList();
+        return (Collection<Privilege>) query.getResultList();
     }
 
     @Override
