@@ -1,5 +1,6 @@
 package com.qbit.forum.model;
 
+import com.qbit.test.Helper;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,7 +22,7 @@ public class TestUserToRole {
 
     @BeforeClass
     private void setUp() {
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("test-persistence-unit");
+        EntityManagerFactory emFactory = Helper.getEntityManagerFactory();
         em = emFactory.createEntityManager();
     }
 

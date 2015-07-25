@@ -4,6 +4,7 @@ package com.qbit.forum.model;
  * Created by Benek on 2015-07-15.
  */
 
+import com.qbit.test.Helper;
 import org.testng.annotations.*;
 
 import javax.persistence.EntityManager;
@@ -24,7 +25,7 @@ public class TestEntity {
 
     @BeforeClass
     private void setUp() {
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("test-persistence-unit");
+        EntityManagerFactory emFactory = Helper.getEntityManagerFactory();
         em = emFactory.createEntityManager();
     }
 
