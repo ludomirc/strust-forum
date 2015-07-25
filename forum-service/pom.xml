@@ -34,7 +34,6 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
-
     </repositories>
 
     <dependencies>
@@ -44,15 +43,16 @@
             <artifactId>forum-api</artifactId>
         </dependency>
 
-        <!-- <dependency>
-             <groupId>org.apache.openejb</groupId>
-             <artifactId>javaee-api</artifactId>
-         </dependency>-->
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
         </dependency>
 
 
@@ -62,7 +62,6 @@
             <version>7.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -79,6 +78,77 @@
         </dependency>
 
     </dependencies>
+    <!--    <repositories>
+
+            <repository>
+                <id>apache-m2-snapshot</id>
+                <name>Apache Snapshot Repository</name>
+                <url>https://repository.apache.org/content/groups/snapshots</url>
+            </repository>
+            <repository>
+                <id>jboss-public-repository-group</id>
+                <name>JBoss Public Maven Repository Group</name>
+                <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+                <layout>default</layout>
+                <releases>
+                    <enabled>true</enabled>
+                    <updatePolicy>always</updatePolicy>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                    <updatePolicy>always</updatePolicy>
+                </snapshots>
+            </repository>
+
+        </repositories>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>qbit.edukacja.struts.forum</groupId>
+                <artifactId>forum-api</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+            &lt;!&ndash; jee dependency &ndash;&gt;
+            <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>javax.ejb-api</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+            </dependency>
+
+            &lt;!&ndash; openejb (with hibernate) container for running tests &ndash;&gt;
+            <dependency>
+                <groupId>org.apache.openejb</groupId>
+                <artifactId>openejb-core-hibernate</artifactId>
+                <version>5.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+            </dependency>
+
+        </dependencies>-->
 
     <build>
         <plugins>
